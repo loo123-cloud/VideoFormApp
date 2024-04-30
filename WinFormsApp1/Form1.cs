@@ -104,7 +104,7 @@ namespace WinFormsApp1
                 if (c < b)
                 {
                     hwndTmp = IntPtr.Zero;
-                    webView21.CoreWebView2.ExecuteScriptAsync(MinWin);
+/*                    webView21.CoreWebView2.ExecuteScriptAsync(MinWin);*/
                 }
             }
             else
@@ -125,7 +125,7 @@ namespace WinFormsApp1
                         if (a > b)
                         {
                             hwndTmp = hwnd;
-                            webView21.CoreWebView2.ExecuteScriptAsync(MinWin);
+/*                            webView21.CoreWebView2.ExecuteScriptAsync(MinWin);*/
                             /*webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);*/
                             DialogResult dr = MessageBox.Show(x.ToString(),y.ToString());
 
@@ -136,18 +136,17 @@ namespace WinFormsApp1
             }
         }
         public static string url = ConfigurationManager.ConnectionStrings["htmlurl"].ConnectionString;
-        public static string url1 = ConfigurationManager.ConnectionStrings["htmlurl1"].ConnectionString;
         public static string MinWin = ConfigurationManager.ConnectionStrings["MinWin"].ConnectionString;
         public static string MaxWin = ConfigurationManager.ConnectionStrings["MaxWin"].ConnectionString;
         private void Form1_Load(object sender, EventArgs e)
         {
             IntPtr hwndMy = Win32Func.GetForegroundWindow();
-            /*Win32Func.GetClassName(hwndMy, MyCN, 256);
+            Win32Func.GetClassName(hwndMy, MyCN, 256);
             hwnd = Win32Func.FindWindow(null, this.Text);
             Win32Func.SetParent(hwnd, programHandle);
             this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;*/
-            webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);
+            this.WindowState = FormWindowState.Maximized;
+/*            webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);*/
             webView21.Source = new Uri(url);
 
         }
@@ -160,7 +159,6 @@ namespace WinFormsApp1
 
         private void Ë¢ÐÂToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            webView21.Source = new Uri(url1);
             hwndTmp = IntPtr.Zero;
         }
     }
