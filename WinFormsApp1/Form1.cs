@@ -80,10 +80,12 @@ namespace WinFormsApp1
             timerSwipe.Elapsed += TimerSwipe_Elapsed;
             timerSwipe.Start();
 
+
             /*this.Text = "ovo";*/
             // 设置当前窗口为 Program Manager的子窗口
             /*DialogResult dr = MessageBox.Show(haPid.ToString(), hwnd.ToString());*/
         }
+
         public struct RECT
         {
             public int Left;                             //最左坐标
@@ -92,7 +94,7 @@ namespace WinFormsApp1
             public int Bottom;                        //最下坐标
         }
         IntPtr hwndTmp = IntPtr.Zero;
-        int b = (int)(Screen.PrimaryScreen.WorkingArea.Height * Screen.PrimaryScreen.WorkingArea.Width*0.96);
+        int b = (int)(Screen.PrimaryScreen.WorkingArea.Height * Screen.PrimaryScreen.WorkingArea.Width * 0.96);
         private void TimerSwipe_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //这里写定时处理事件...
@@ -104,7 +106,11 @@ namespace WinFormsApp1
                 if (c < b)
                 {
                     hwndTmp = IntPtr.Zero;
-/*                    webView21.CoreWebView2.ExecuteScriptAsync(MinWin);*/
+                    //返回ui线程
+                    this.Invoke(() =>
+                    {
+                        webView21.CoreWebView2.ExecuteScriptAsync(MinWin);
+                    });
                 }
             }
             else
@@ -125,12 +131,15 @@ namespace WinFormsApp1
                         if (a > b)
                         {
                             hwndTmp = hwnd;
-/*                            webView21.CoreWebView2.ExecuteScriptAsync(MinWin);*/
                             /*webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);*/
-                            DialogResult dr = MessageBox.Show(x.ToString(),y.ToString());
-
+                            /*DialogResult dr = MessageBox.Show(x.ToString(),y.ToString());*/
+                            //返回ui线程
+                            this.Invoke(() =>
+                            {
+                                webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);
+                            });
                         }
-                        
+
                     }
                 }
             }
@@ -138,28 +147,38 @@ namespace WinFormsApp1
         public static string url = ConfigurationManager.ConnectionStrings["htmlurl"].ConnectionString;
         public static string MinWin = ConfigurationManager.ConnectionStrings["MinWin"].ConnectionString;
         public static string MaxWin = ConfigurationManager.ConnectionStrings["MaxWin"].ConnectionString;
+        public static string Refresh = ConfigurationManager.ConnectionStrings["Refresh"].ConnectionString;
         private void Form1_Load(object sender, EventArgs e)
         {
-            IntPtr hwndMy = Win32Func.GetForegroundWindow();
-            Win32Func.GetClassName(hwndMy, MyCN, 256);
+            this.BackColor = Color.White; 
+            this.TransparencyKey = Color.White;
             hwnd = Win32Func.FindWindow(null, this.Text);
             Win32Func.SetParent(hwnd, programHandle);
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-/*            webView21.CoreWebView2.ExecuteScriptAsync(MaxWin);*/
+            /*DialogResult dr = MessageBox.Show(a.ToString());*/
             webView21.Source = new Uri(url);
+            //在窗口挂载后再获取句柄
+            IntPtr hwndMy = Win32Func.GetForegroundWindow();
+            Win32Func.GetClassName(hwndMy, MyCN, 256);
+
 
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.mainNotifyIcon.Visible = false;
             this.Close();
         }
 
         private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            url = ConfigurationManager.ConnectionStrings["htmlurl"].ConnectionString;
+            MinWin = ConfigurationManager.ConnectionStrings["MinWin"].ConnectionString;
+            MaxWin = ConfigurationManager.ConnectionStrings["MaxWin"].ConnectionString;
+            webView21.CoreWebView2.ExecuteScriptAsync(Refresh);
             hwndTmp = IntPtr.Zero;
         }
+
+
     }
 }
