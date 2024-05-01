@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body class="parent">
+
+  <video autoplay name="media" muted loop id="video">
+    <source  type="video/mp4">
+  </video>
+
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+      text-align: center;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: #555555;
+      overflow: hidden;
+      position: relative;
+    }
+
+    video {
+      min-width: 100vw;
+      /*让视频不与底部任务栏重合，避免win10在开启毛玻璃特效时产生额外开销*/
+      height: calc(100vh - 40px);
+      /*使视频水平、垂直居中，可能产生额外开销*/
+      /*left: 50%;
+      top: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%); */
+    }
+  </style>
+  <script>
+  /*设置视频路径*/
+  const video=document.getElementsByTagName("video")[0]
+  const url="file:///D:/%E8%A7%86%E9%A2%91/%E5%A2%99%E7%BA%B8/"
+  const videoName="Crow Tail-Crow Group.mp4"
+  video.src=url+videoName
+  /*半速度播放60帧视频*/
+  var t=500;
+  var a=0.045*t;
+  setTimeout(() => { 
+  if (video.webkitDecodedFrameCount>a){
+    video.playbackRate = 0.5
+  }
+  }, t);
+  </script>
+</body>
+</html>
