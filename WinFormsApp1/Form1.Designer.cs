@@ -47,9 +47,9 @@
             webView21.DefaultBackgroundColor = Color.White;
             webView21.Dock = DockStyle.Fill;
             webView21.Location = new Point(0, 0);
-            webView21.Margin = new Padding(2);
+            webView21.Margin = new Padding(3, 2, 3, 2);
             webView21.Name = "webView21";
-            webView21.Size = new Size(571, 375);
+            webView21.Size = new Size(799, 450);
             webView21.TabIndex = 0;
             webView21.ZoomFactor = 1D;
             // 
@@ -65,32 +65,32 @@
             mainNotifyContextMenuStrip.ImageScalingSize = new Size(20, 20);
             mainNotifyContextMenuStrip.Items.AddRange(new ToolStripItem[] { 刷新ToolStripMenuItem, 退出ToolStripMenuItem });
             mainNotifyContextMenuStrip.Name = "mainNotifyContextMenuStrip";
-            mainNotifyContextMenuStrip.Size = new Size(95, 48);
+            mainNotifyContextMenuStrip.Size = new Size(101, 48);
             // 
             // 刷新ToolStripMenuItem
             // 
             刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            刷新ToolStripMenuItem.Size = new Size(94, 22);
+            刷新ToolStripMenuItem.Size = new Size(100, 22);
             刷新ToolStripMenuItem.Text = "刷新";
             刷新ToolStripMenuItem.Click += 刷新ToolStripMenuItem_Click;
             // 
             // 退出ToolStripMenuItem
             // 
             退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            退出ToolStripMenuItem.Size = new Size(94, 22);
+            退出ToolStripMenuItem.Size = new Size(100, 22);
             退出ToolStripMenuItem.Text = "退出";
             退出ToolStripMenuItem.Click += 退出ToolStripMenuItem_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(5F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(571, 375);
+            ClientSize = new Size(799, 450);
             ControlBox = false;
             Controls.Add(webView21);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;

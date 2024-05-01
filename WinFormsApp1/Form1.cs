@@ -75,7 +75,7 @@ namespace WinFormsApp1
             InitializeComponent();
             SendMsgToProgman();
             System.Timers.Timer timerSwipe = new System.Timers.Timer();
-            timerSwipe.Interval = 1000;
+            timerSwipe.Interval = Timei;
             timerSwipe.AutoReset = true;//÷ÿ∏¥
             timerSwipe.Elapsed += TimerSwipe_Elapsed;
             timerSwipe.Start();
@@ -148,9 +148,10 @@ namespace WinFormsApp1
         public static string MinWin = ConfigurationManager.ConnectionStrings["MinWin"].ConnectionString;
         public static string MaxWin = ConfigurationManager.ConnectionStrings["MaxWin"].ConnectionString;
         public static string Refresh = ConfigurationManager.ConnectionStrings["Refresh"].ConnectionString;
+        public static int Timei = int.Parse(ConfigurationManager.AppSettings["TimeInterval"]);
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.White; 
+            this.BackColor = Color.White;
             this.TransparencyKey = Color.White;
             hwnd = Win32Func.FindWindow(null, this.Text);
             Win32Func.SetParent(hwnd, programHandle);
