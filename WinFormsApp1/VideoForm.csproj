@@ -7,11 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon></PackageIcon>
-    <ApplicationIcon>badcc7e005e45e6a6e4ffd0923c348f18e536744.jpg@942w_942h_progressive_rgba.ico</ApplicationIcon>
+    <ApplicationIcon>xier.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="badcc7e005e45e6a6e4ffd0923c348f18e536744.jpg@942w_942h_progressive_rgba.ico" />
+    <Content Include="xier.ico" />
   </ItemGroup>
 
   <ItemGroup>

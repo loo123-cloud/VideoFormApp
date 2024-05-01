@@ -51,13 +51,14 @@
             webView21.Name = "webView21";
             webView21.Size = new Size(799, 450);
             webView21.TabIndex = 0;
+            webView21.TabStop = false;
             webView21.ZoomFactor = 1D;
             // 
             // mainNotifyIcon
             // 
             mainNotifyIcon.ContextMenuStrip = mainNotifyContextMenuStrip;
             mainNotifyIcon.Icon = (Icon)resources.GetObject("mainNotifyIcon.Icon");
-            mainNotifyIcon.Text = "notifyIcon1";
+            mainNotifyIcon.Text = "VideoForm";
             mainNotifyIcon.Visible = true;
             // 
             // mainNotifyContextMenuStrip
@@ -91,7 +92,10 @@
             Controls.Add(webView21);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form1";
+            ShowIcon = false;
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
